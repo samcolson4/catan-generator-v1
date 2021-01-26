@@ -27,7 +27,6 @@ describe Generator do
       subject.allocate
       expect(subject.row_five.length).to eq 3
     end
-
   end
 
 end
