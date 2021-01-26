@@ -5,6 +5,7 @@ describe Generator do
   describe '#allocate' do
     it 'adds three hexes to row_one' do
       subject.allocate
+      p subject.row_one
       expect(subject.row_one.length).to eq 3
     end
 
