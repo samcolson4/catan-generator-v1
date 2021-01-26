@@ -18,6 +18,16 @@ describe Generator do
       expect(subject.row_three.length).to eq 5
     end
 
+    it 'adds four hexes to row_four' do
+      subject.allocate
+      expect(subject.row_four.length).to eq 4
+    end
+
+    it 'adds three hexes to row_five' do
+      subject.allocate
+      expect(subject.row_five.length).to eq 3
+    end
+
   end
 
 end
