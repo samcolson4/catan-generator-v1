@@ -15,13 +15,13 @@ class Generator
   end
 
   def allocate
-    # fill_row_one
     @board.each { |row| 
     length = row_length(row)
     while row.length < length
       row << randomise_and_pick
     end
     }
+    top_up
   end
 
   def randomise_and_pick
@@ -32,18 +32,6 @@ class Generator
   end
 
   private
-  def fill_row_one
-    while @row_one.length < 3
-      @row_one << randomise_and_pick
-    end
-  end
-
-  def fill_row_two
-    while @row_one.length < 3
-      @row_one << randomise_and_pick
-    end
-  end
-
   def row_length(row)
     if row == @board[0] || row == @board[4]
       3
@@ -52,6 +40,13 @@ class Generator
     else
       5
     end
+  end
+
+  def top_up
+    @row_two << randomise_and_pick
+    @row_four << randomise_and_pick
+    @row_three << randomise_and_pick
+    @row_three << randomise_and_pick
   end
 
 end
