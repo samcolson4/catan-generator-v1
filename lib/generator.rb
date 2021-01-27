@@ -6,11 +6,12 @@ class Generator
 
   PORTS = ["sheep", "lumber", "ore", "wheat", "three", "three", "three", "three"]
 
-  attr_reader :hexes, :board_hexes, :numbers, :board_numbers
+  attr_reader :hexes, :board_hexes, :numbers, :board_numbers, :ports, :board_ports
 
   def initialize(hexes: hexes = HEXES, numbers: numbers = NUMBERS, ports: ports = PORTS)
     @board_hexes = []
     @board_numbers = []
+    @board_ports = []
     @hexes = hexes
     @numbers = numbers
     @ports = ports
@@ -35,6 +36,10 @@ class Generator
     else
       @board_numbers = @numbers.shuffle
     end
+  end
+
+  def allocate_ports
+    @board_ports = @ports.shuffle
   end
 
   private

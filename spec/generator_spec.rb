@@ -47,4 +47,12 @@ describe Generator do
       expect { board.allocate_numbers }.to raise_error("Hexes and numbers are not equal")
     end
   end
+
+  describe '#allocate_ports' do
+    it 'does not change the number of values in the array' do
+      subject.allocate_ports
+      expect(subject.board_ports.length).to eq subject.ports.length
+    end
+  end
+
 end
