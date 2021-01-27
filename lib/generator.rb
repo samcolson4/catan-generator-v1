@@ -45,7 +45,7 @@ class Generator
 
   private
   def is_hex_num_equal?
-    @hexes.length == @numbers.length + 1
+    @hexes.length == @numbers.length + 1 #the plus one accounts for the desert hex, which does not get a number.
   end
 
 end
