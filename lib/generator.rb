@@ -4,13 +4,16 @@ class Generator
 
   NUMBERS = [5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11]
 
+  PORTS = ["sheep", "lumber", "ore", "wheat", "three", "three", "three", "three"]
+
   attr_reader :hexes, :board_hexes, :numbers, :board_numbers
 
-  def initialize(hexes: hexes = HEXES, numbers: numbers = NUMBERS)
+  def initialize(hexes: hexes = HEXES, numbers: numbers = NUMBERS, ports: ports = PORTS)
     @board_hexes = []
     @board_numbers = []
     @hexes = hexes
     @numbers = numbers
+    @ports = ports
   end
 
   def create_board
