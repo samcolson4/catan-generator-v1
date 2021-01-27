@@ -30,5 +30,4 @@ class Generator
     @hexes.length == @numbers.length + 1
   end
 
-
 end
