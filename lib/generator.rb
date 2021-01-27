@@ -4,18 +4,23 @@ class Generator
 
   NUMBERS = [5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11]
 
-  attr_reader :hexes, :board_hexes, :numbers, :board_numbers
+  PORTS = ["sheep", "lumber", "ore", "wheat", "three", "three", "three", "three"]
 
-  def initialize(hexes: hexes = HEXES, numbers: numbers = NUMBERS)
+  attr_reader :hexes, :board_hexes, :numbers, :board_numbers, :ports, :board_ports
+
+  def initialize(hexes: hexes = HEXES, numbers: numbers = NUMBERS, ports: ports = PORTS)
     @board_hexes = []
     @board_numbers = []
+    @board_ports = []
     @hexes = hexes
     @numbers = numbers
+    @ports = ports
   end
 
   def create_board
     allocate_hexes
     allocate_numbers
+    allocate_ports
   end
 
   def allocate_hexes
@@ -34,9 +39,13 @@ class Generator
     end
   end
 
+  def allocate_ports
+    @board_ports = @ports.shuffle
+  end
+
   private
   def is_hex_num_equal?
-    @hexes.length == @numbers.length + 1
+    @hexes.length == @numbers.length + 1 #the plus one accounts for the desert hex, which does not get a number.
   end
 
 end
