@@ -49,7 +49,7 @@ describe Generator do
   end
 
   describe '#allocate_ports' do
-    it 'does not change the number of values in the array' do
+    it 'does not change the number of values in the array when allocating' do
       subject.allocate_ports
       expect(subject.board_ports.length).to eq subject.ports.length
     end
