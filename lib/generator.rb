@@ -4,52 +4,21 @@ class Generator
 
   NUMBERS = [5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11]
 
-  attr_reader :row_one, :row_two, :row_three, :row_four, :row_five, :hexes, :board, :numbers
+  attr_reader :hexes, :board_hexes, :numbers, :board_numbers
 
   def initialize(hexes = HEXES, numbers = NUMBERS)
-    @row_one = []
-    @row_two = []
-    @row_three = []
-    @row_four = []
-    @row_five = []
-    @board = [@row_one, @row_two, @row_three, @row_four, @row_five]
+    @board_hexes = []
+    @board_numbers = []
     @hexes = hexes
     @numbers = numbers
   end
 
   def allocate_hexes
-    @board.each { |row| 
-    length = row_length(row)
-    while row.length < length
-      row << randomise_and_pick
-    end
-    }
-    top_up
+    @board_hexes = @hexes.shuffle
   end
 
-  def randomise_and_pick
-    index = rand(0..@hexes.length)
-    hex = @hexes[index]
-    @hexes.delete_at(index)
-    hex
+  def allocate_numbers
+    @board_numbers = @numbers.shuffle
   end
-
-  private
-  def row_length(row)
-    if row == @board[0] || row == @board[4]
-      3
-    elsif row == @board[1] || row == @board[3]
-      4
-    else
-      5
-    end
-  end
-
-  def top_up
-    @row_two << randomise_and_pick
-    @row_four << randomise_and_pick
-    @row_three << randomise_and_pick
-    @row_three << randomise_and_pick
-  end
-
+  
 end
