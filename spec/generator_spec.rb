@@ -47,5 +47,4 @@ describe Generator do
       expect { board.allocate_numbers }.to raise_error("Hexes and numbers are not equal")
     end
   end
-
 end
