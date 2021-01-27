@@ -1,50 +1,50 @@
 require 'generator'
 
 describe Generator do
-  describe '#randomise_and_pick' do
-    it 'removes one hex from the total list' do
-      expect { subject.randomise_and_pick }.to change { subject.hexes.length }.by(-1)
-    end
-
-    it 'returns the name of a hex' do
-      expect(subject.randomise_and_pick).to be_a(String)
-    end
-
-    it 'returns "wheat" when set to index 0' do
-      srand(4)
-      expect(subject.randomise_and_pick).to eq "lumber"
-    end
-  end
-
   describe '#allocate_hexes' do
-    it 'adds three hexes to row_one' do
+
+    it 'sets board_hexes to an array the same length as hexes' do
       subject.allocate_hexes
-      expect(subject.row_one.length).to eq 3
+      expect(subject.board_hexes.length).to eq subject.hexes.length
     end
 
-    it 'adds four hexes to row_two' do
+    it 'contains wheat' do
       subject.allocate_hexes
-      expect(subject.row_two.length).to eq 4
+      expect(subject.board_hexes).to include("wheat")
     end
 
-    it 'adds five hexes to row_three' do
+    it 'contains ore' do
       subject.allocate_hexes
-      expect(subject.row_three.length).to eq 5
+      expect(subject.board_hexes).to include("wheat")
     end
 
-    it 'adds four hexes to row_four' do
+    it 'does not contain a hex that does not exist' do
       subject.allocate_hexes
-      expect(subject.row_four.length).to eq 4
+      expect(subject.board_hexes).to_not include("sand")
     end
 
-    it 'adds three hexes to row_five' do
-      subject.allocate_hexes
-      expect(subject.row_five.length).to eq 3
+    it 'raises an error if there hexes and numbers are not equal' do
+      numbers = [5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11, 13, 13]
+      board = Generator.new(numbers: numbers)
+      expect { board.allocate_hexes }.to raise_error("Hexes and numbers are not equal")
     end
   end
 
   describe '#allocate_numbers' do
-    
-  end
+    it 'does not change the number of values in the array' do
+      subject.allocate_numbers
+      expect(subject.board_numbers.length).to eq subject.numbers.length
+    end
 
+    it 'contains a 10' do
+      subject.allocate_numbers
+      expect(subject.board_numbers).to include 10
+    end
+
+    it 'raises an error if there hexes and numbers are not equal' do
+      numbers = [5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11, 13, 13]
+      board = Generator.new(numbers: numbers)
+      expect { board.allocate_numbers }.to raise_error("Hexes and numbers are not equal")
+    end
+  end
 end
