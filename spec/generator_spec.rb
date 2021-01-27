@@ -34,6 +34,15 @@ describe Generator do
     it 'removes one hex from the total list' do
       expect { subject.randomise_and_pick }.to change { subject.hexes.length }.by(-1)
     end
+
+    it 'returns the name of a hex' do
+      expect(subject.randomise_and_pick).to be_a(String)
+    end
+
+    it 'returns "wheat" when set to index 0' do
+      srand(4)
+      expect(subject.randomise_and_pick).to eq "lumber"
+    end
   end
 
 end
