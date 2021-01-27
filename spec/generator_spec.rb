@@ -24,7 +24,15 @@ describe Generator do
   end
 
   describe '#allocate_numbers' do
+    it 'does not change the number of values in the array' do
+      subject.allocate_numbers
+      expect(subject.board_numbers.length).to eq subject.numbers.length
+    end
 
+    it 'contains a 10' do
+      subject.allocate_numbers
+      expect(subject.board_numbers).to include 10
+    end
   end
 
 end
