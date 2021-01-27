@@ -20,6 +20,7 @@ class Generator
   def create_board
     allocate_hexes
     allocate_numbers
+    allocate_ports
   end
 
   def allocate_hexes
