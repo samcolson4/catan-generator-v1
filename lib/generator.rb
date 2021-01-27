@@ -13,6 +13,11 @@ class Generator
     @numbers = numbers
   end
 
+  def create_board
+    allocate_hexes
+    allocate_numbers
+  end
+
   def allocate_hexes
     if !is_hex_num_equal? 
       raise "Hexes and numbers are not equal"
@@ -22,7 +27,11 @@ class Generator
   end
 
   def allocate_numbers
-    @board_numbers = @numbers.shuffle
+    if !is_hex_num_equal? 
+      raise "Hexes and numbers are not equal"
+    else
+      @board_numbers = @numbers.shuffle
+    end
   end
 
   private

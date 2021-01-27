@@ -40,6 +40,12 @@ describe Generator do
       subject.allocate_numbers
       expect(subject.board_numbers).to include 10
     end
+
+    it 'raises an error if there hexes and numbers are not equal' do
+      numbers = [5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11, 13, 13]
+      board = Generator.new(numbers: numbers)
+      expect { board.allocate_numbers }.to raise_error("Hexes and numbers are not equal")
+    end
   end
 
 end
