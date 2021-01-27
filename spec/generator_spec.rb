@@ -43,4 +43,8 @@ describe Generator do
     end
   end
 
+  describe '#allocate_numbers' do
+    
+  end
+
 end
