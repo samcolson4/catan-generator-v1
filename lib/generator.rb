@@ -2,7 +2,7 @@ class Generator
 
   HEXES = ["wheat", "wheat", "wheat", "wheat", "ore", "ore", "ore", "brick", "brick", "brick", "sheep", "sheep", "sheep", "sheep", "lumber", "lumber", "lumber", "lumber", "lumber", "desert"]
 
-  attr_reader :row_one, :row_two, :row_three, :row_four, :row_five, :hexes
+  attr_reader :row_one, :row_two, :row_three, :row_four, :row_five, :hexes, :board
 
   def initialize(hexes = HEXES)
     @row_one = []
@@ -14,7 +14,7 @@ class Generator
     @hexes = hexes
   end
 
-  def allocate
+  def allocate_hexes
     @board.each { |row| 
     length = row_length(row)
     while row.length < length
